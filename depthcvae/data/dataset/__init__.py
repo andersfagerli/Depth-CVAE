@@ -3,10 +3,12 @@ from torch.utils.data import ConcatDataset
 from depthcvae.config.path_catlog import DatasetCatalog
 from .scenenet import SceneNetDataset
 from .varos import VAROSDataset
+from .varos_multiview import VAROSMultiviewDataset
 
 _DATASETS = {
     'SceneNetRGBD': SceneNetDataset,
-    'VAROSDataset': VAROSDataset
+    'VAROSDataset': VAROSDataset,
+    'VAROSMultiviewDataset': VAROSMultiviewDataset
 }
 
 

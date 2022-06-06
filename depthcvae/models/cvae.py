@@ -13,7 +13,7 @@ class CVAE(nn.Module):
         self.latent_input_dim = cfg.MODEL.CVAE.LATENT.INPUT_DIM
 
         # Encoder
-        self.down1 = ResInCat(1, 64)
+        self.down1 = ResInCat(3, 64)
         self.down2 = ResDownCat(64, 64) 
         self.down3 = ResDownCat(64, 128) 
         self.down4 = ResDownCat(128, 256)  
@@ -33,7 +33,7 @@ class CVAE(nn.Module):
         self.up3 = ResUp(128, 64, bilinear)
         self.up4 = ResUp(64, 64, bilinear)
         self.out = nn.Sequential(
-            OutConv(64, 1),
+            OutConv(64, 3),
             nn.Sigmoid()
         )  
         

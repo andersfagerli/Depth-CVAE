@@ -41,7 +41,7 @@ def start_train(cfg, model, data_loader, optimizer, checkpointer, arguments, sch
     try:
         for epoch in range(start_epoch, epochs):
             epoch = epoch + 1
-            for iteration, (images, targets, image_id) in enumerate(data_loader, start_iter):
+            for iteration, (images, targets, Ts, image_id) in enumerate(data_loader, start_iter):
                 iteration = iteration + 1
                 global_step = global_step + 1
                 arguments["iteration"] = iteration
@@ -55,7 +55,7 @@ def start_train(cfg, model, data_loader, optimizer, checkpointer, arguments, sch
                 loss_dict = model(images, targets)
 
                 # Weighting
-                weights = dict(kl_div=beta(global_step, milestone),  uncertaintyaware_loss=1 if epochs//2>20 else 0)
+                weights = dict(kl_div=beta(global_step, milestone))
                 loss_dict, unweighted_loss_dict = weigh(loss_dict, weights)
 
                 # Total loss

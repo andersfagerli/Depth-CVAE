@@ -34,7 +34,7 @@ class DepthCVAE(nn.Module):
 
         return F.l1_loss(self._depth, self._target)
     
-    def forward(self, input, target=None):
+    def forward(self, input, target=None, Ts=None):
         is_training = target is not None
 
         # Forward
@@ -47,7 +47,7 @@ class DepthCVAE(nn.Module):
         if is_training:
             self._target = target
             
-            loss_dict = self.loss(depth, mu, logvar, target, b=b)
+            loss_dict = self.loss(depth, mu, logvar, target, b=b, Ts=Ts)
             return loss_dict
         else:
             result = dict(depth=self.depth, b=self.b)

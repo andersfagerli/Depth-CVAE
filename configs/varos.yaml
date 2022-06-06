@@ -4,7 +4,7 @@ INPUT: # Input to the network
   IMAGE_CHANNELS: 3
   PIXEL_MEAN: [29.07345509, 59.31016239, 82.7120999]
   PIXEL_STD: [43.10742488, 54.9318506,  49.03897355]
-  RGB2GRAY: False
+  RGB2GRAY: True
 OUTPUT:
   IMAGE_SIZE: [288, 512]
   CHANNELS: 1
@@ -32,10 +32,10 @@ TRAINER:
     LR: 0.0001
 DATASETS:
   DATASET_DIR: "datasets"
-  TRAIN: ("VAROSDataset_train_seq1",)
-  TEST: ("VAROSDataset_val_seq1",)
-OUTPUT_DIR: "outputs/singleview"
-OUTPUT_DIR_MODEL: "outputs/singleview/models"
-PRETRAINED_WEIGHTS: "outputs/singleview/models/model_final.pth"
+  TRAIN: ("VAROSMultiviewDataset_train_seq1",)
+  TEST: ("VAROSMultiviewDataset_val_seq1",)
+OUTPUT_DIR: "outputs/multiview"
+OUTPUT_DIR_MODEL: "outputs/multiview/models"
+PRETRAINED_WEIGHTS: "outputs/multiview/models/model_final.pth"
 DEMO_RGB_PATH: "demo/varos/rgb/"
 DEMO_DEPTH_PATH: "demo/varos/depth/"

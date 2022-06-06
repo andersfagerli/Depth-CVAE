@@ -21,7 +21,7 @@ class UNet(nn.Module):
         self.up3 = ResUp(128, 64, bilinear)
         self.up4 = ResUp(64, 64, bilinear)
         self.out = nn.Sequential(
-            OutConv(64, 1),
+            OutConv(64, 3),
             nn.Sigmoid()
         )
 
