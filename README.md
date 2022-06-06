@@ -1,6 +1,8 @@
 # Depth-CVAE
 PyTorch implementation of a conditional variational autoencoder for predicting depth from images.
 
+![alt text](movie.gif)
+
 ## Requirements
 ### PyTorch
 Choose your relevent PyTorch version here https://pytorch.org/get-started/locally/, by choosing correct system, pip/conda, GPU/CPU only. E.g for Linux using pip with no GPU, this would be
