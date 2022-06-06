@@ -1,0 +1,41 @@
+INPUT: # Input to the network
+  ORIGINAL_IMAGE_SIZE: [720, 1280]
+  IMAGE_SIZE: [288, 512] # After resizing
+  IMAGE_CHANNELS: 3
+  PIXEL_MEAN: [29.07345509, 59.31016239, 82.7120999]
+  PIXEL_STD: [43.10742488, 54.9318506,  49.03897355]
+  RGB2GRAY: False
+OUTPUT:
+  IMAGE_SIZE: [288, 512]
+  CHANNELS: 1
+  PIXEL_MEAN: 21490.507800145235
+  PIXEL_MAX: 65535
+MODEL:
+  NAME: "depthcvae"
+  PRETRAINED: False
+  UNET:
+    USE_SPARSE: False
+    ENCODER:
+      PRETRAINED: False
+  CVAE:
+    LATENT:
+      INPUT_DIM: [9, 16]
+      DIMENSIONS: 128
+TRAINER:
+  EPOCHS: 40
+  BATCH_SIZE: 4
+  SAVE_STEP: 5000
+  EVAL_STEP: 250
+  KL_MILESTONE: 8
+  OPTIMIZER:
+    TYPE: "adam"
+    LR: 0.0001
+DATASETS:
+  DATASET_DIR: "datasets"
+  TRAIN: ("VAROSDataset_train_seq1",)
+  TEST: ("VAROSDataset_val_seq1",)
+OUTPUT_DIR: "outputs/singleview"
+OUTPUT_DIR_MODEL: "outputs/singleview/models"
+PRETRAINED_WEIGHTS: "outputs/singleview/models/model_final.pth"
+DEMO_RGB_PATH: "demo/varos/rgb/"
+DEMO_DEPTH_PATH: "demo/varos/depth/"
