@@ -40,14 +40,14 @@ Configuration files are located in configs/, where you can set parameters, locat
 ## Train
 After downloading and placing the datasets correctly, do e.g.
 ```
-python3 train.py configs/varos_scratch.yaml
+python3 train.py configs/varos.yaml
 ```
 to train on the VAROS dataset.
 
 ## Testing
 After having trained a model, do e.g.
 ```
-python3 demo.py configs/varos_scratch.yaml
+python3 demo.py configs/varos.yaml
 ```
 to test on a set of demo images located in demo/
 
