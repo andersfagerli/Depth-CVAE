@@ -2,6 +2,7 @@
 PyTorch implementation of a conditional variational autoencoder for predicting depth from images.
 
 ![](demo/movie.gif)
+<img src="demo/tsdf.png" width="640">
 
 ## Requirements
 ### PyTorch
